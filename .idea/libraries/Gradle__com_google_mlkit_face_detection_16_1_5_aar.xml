@@ -1,9 +1,11 @@
 <component name="libraryTable">
   <library name="Gradle: com.google.mlkit:face-detection:16.1.5@aar">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/a4c2959e47370302909ac6115be188cc/transformed/face-detection-16.1.5/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/a4c2959e47370302909ac6115be188cc/transformed/face-detection-16.1.5/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/a4c2959e47370302909ac6115be188cc/transformed/face-detection-16.1.5/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/a1d6073fa6ac5c7a6bb383fd9b461b72/transformed/face-detection-16.1.5/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/7e724a1a10fdf588dc86d03a02691fa8/transformed/face-detection-16.1.5/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/7e724a1a10fdf588dc86d03a02691fa8/transformed/face-detection-16.1.5/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/7e724a1a10fdf588dc86d03a02691fa8/transformed/face-detection-16.1.5/jars/classes.jar!/" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.mlkit/face-detection/16.1.5/ace98f39b262c59be4be4d52b871d1ba5dfff723/face-detection-16.1.5-javadoc.jar!/" />

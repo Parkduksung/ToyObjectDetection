@@ -4,6 +4,8 @@ plugins {
     id 'dagger.hilt.android.plugin'
     id 'kotlin-kapt'
     id 'kotlin-parcelize'
+    id 'com.google.gms.google-services'
+    id 'com.google.firebase.crashlytics'
 }
 
 android {
@@ -41,6 +43,14 @@ android {
 
 dependencies {
 
+  ext {
+        coroutines_Version = '1.5.2'
+        glide_version = '4.10.0'
+        lottie_version = '4.1.0'
+        retrofit_version = '2.6.2'
+    }
+
+
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.4.1'
     implementation 'com.google.android.material:material:1.6.0'
@@ -56,6 +66,23 @@ dependencies {
     implementation 'com.google.android.gms:play-services-mlkit-face-detection:17.0.1'
 
     implementation 'io.github.ParkSangGwon:tedpermission-normal:3.3.0'
+
+
+    //Lottie
+    implementation "com.airbnb.android:lottie:$lottie_version"
+
+    //Retrofit
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
+
+
+    //coroutine
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_Version"
+
+    //Glide
+    implementation "com.github.bumptech.glide:glide:$glide_version"
+    annotationProcessor "com.github.bumptech.glide:compiler:$glide_version"
+
 }
 
 
@@ -69,7 +96,6 @@ dependencies {
         room_version = '2.3.0'
         activity_version = '1.4.0'
         fragment_version = '1.4.1'
-        billing_version = '4.0.0'
     }
 
     //hilt
@@ -93,4 +119,15 @@ dependencies {
     implementation "androidx.activity:activity-ktx:$activity_version"
 
     implementation 'me.relex:circleindicator:2.1.6'
+}
+
+//firebase
+dependencies {
+    implementation 'com.google.firebase:firebase-messaging:20.1.0'
+    implementation 'com.google.firebase:firebase-crashlytics-ktx:18.2.7'
+    implementation 'com.google.firebase:firebase-firestore:21.4.0'
+    implementation 'com.google.firebase:firebase-auth:19.2.0'
+    implementation platform('com.google.firebase:firebase-bom:30.3.1')
+    implementation 'com.google.firebase:firebase-crashlytics'
+    implementation 'com.google.firebase:firebase-analytics'
 }
