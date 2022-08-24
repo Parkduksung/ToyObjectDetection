@@ -10,4 +10,18 @@
 
     <color name="lgray">#ECECEC</color>
     <color name="gray">#CCCCCC</color>
+
+    <color name="colorPrimary">#bce6ff</color>
+    <color name="colorPrimaryDark">#88cdf6</color>
+    <color name="colorText">#dcdde1</color>
+    <color name="colorTextDark">#646464</color>
+    <color name="colorLightGrey">#c0c0c0</color>
+    <color name="colorLightBlue">#8acbf6</color>
+    <color name="colorWhite">#ffffff</color>
+    <color name="colorWhiteBlue">#cde9fb</color>
+    <color name="colorseekbar">#ebebeb</color>
+
+    <color name="main">#7D5CDD</color>
+    <color name="text">#6b6b6b</color>
+    <color name="second">#C2C2C2</color>
 </resources>
