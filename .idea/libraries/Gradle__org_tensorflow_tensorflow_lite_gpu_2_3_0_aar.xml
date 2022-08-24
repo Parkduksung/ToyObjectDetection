@@ -3,9 +3,10 @@
     <CLASSES>
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/11f9573be8e15e98d37b28d7cf85d1b6/transformed/tensorflow-lite-gpu-2.3.0/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/d7a2f060340a2f8af6c551a9b948a929/transformed/tensorflow-lite-gpu-2.3.0/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/cc019cce7ea48220669c5833b7ed234e/transformed/tensorflow-lite-gpu-2.3.0/AndroidManifest.xml" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/cc019cce7ea48220669c5833b7ed234e/transformed/tensorflow-lite-gpu-2.3.0/res" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/cc019cce7ea48220669c5833b7ed234e/transformed/tensorflow-lite-gpu-2.3.0/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/27673126946c34df2cadf06ea16cda19/transformed/jetified-tensorflow-lite-gpu-2.3.0/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/27673126946c34df2cadf06ea16cda19/transformed/jetified-tensorflow-lite-gpu-2.3.0/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/27673126946c34df2cadf06ea16cda19/transformed/jetified-tensorflow-lite-gpu-2.3.0/jars/classes.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

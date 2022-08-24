@@ -4,6 +4,11 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/drawable/bg_box_stroke.xml" value="0.18" />
+        <entry key="app/src/main/res/drawable/cal_sq_0.xml" value="0.175" />
+        <entry key="app/src/main/res/drawable/cal_sq_1.xml" value="0.175" />
+        <entry key="app/src/main/res/drawable/cal_sq_2.xml" value="0.175" />
+        <entry key="app/src/main/res/drawable/cal_sq_3.xml" value="0.175" />
+        <entry key="app/src/main/res/drawable/cal_today.xml" value="0.175" />
         <entry key="app/src/main/res/layout/activity_account.xml" value="0.13697916666666668" />
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.13697916666666668" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.22056159420289856" />
@@ -12,6 +17,7 @@
         <entry key="app/src/main/res/layout/bg_box_stroke.xml" value="0.22056159420289856" />
         <entry key="app/src/main/res/layout/fragment_account.xml" value="0.2911458333333333" />
         <entry key="app/src/main/res/layout/fragment_login.xml" value="0.13802083333333334" />
+        <entry key="app/src/main/res/layout/fragment_search.xml" value="0.27807971014492755" />
       </map>
     </option>
   </component>

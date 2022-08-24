@@ -3,9 +3,10 @@
     <CLASSES>
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/4a232abcd5c286fad2a6b283496b2764/transformed/tedpermission-normal-3.3.0/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/1ea441c726edb3eb6c31a92a765420ef/transformed/tedpermission-normal-3.3.0/res" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/4b03b1500048966a2a7efb0a097289bd/transformed/tedpermission-normal-3.3.0/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/4b03b1500048966a2a7efb0a097289bd/transformed/tedpermission-normal-3.3.0/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/4b03b1500048966a2a7efb0a097289bd/transformed/tedpermission-normal-3.3.0/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/1999f113f2e0fe8f726bf88fc54e088e/transformed/jetified-tedpermission-normal-3.3.0/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/1999f113f2e0fe8f726bf88fc54e088e/transformed/jetified-tedpermission-normal-3.3.0/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/1999f113f2e0fe8f726bf88fc54e088e/transformed/jetified-tedpermission-normal-3.3.0/res" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.github.ParkSangGwon/tedpermission-normal/3.3.0/ab6a83766acaac6bf1621112eb97466a139f7047/tedpermission-normal-3.3.0-javadoc.jar!/" />
