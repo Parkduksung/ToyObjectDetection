@@ -4,9 +4,12 @@
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/1de1ddce96b47951e242cab880424715/transformed/image-1.0.0-beta1/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/ad91bb2b61298222d578001d001d865a/transformed/image-1.0.0-beta1/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/d401f0bf3d3eaad19ebae7bd2c9043e5/transformed/image-1.0.0-beta1/res" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/cce068f074b7120885ce145605ac11b7/transformed/jetified-image-1.0.0-beta1/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/cce068f074b7120885ce145605ac11b7/transformed/jetified-image-1.0.0-beta1/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/cce068f074b7120885ce145605ac11b7/transformed/jetified-image-1.0.0-beta1/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/3c55bed8da1df30e9db6e641a27aca31/transformed/jetified-image-1.0.0-beta1/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/387a7c46c8cf360d5f54741e4f985715/transformed/jetified-image-1.0.0-beta1/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/a902693e3fc23be1ee8f8a7961a9bcf2/transformed/jetified-image-1.0.0-beta1/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/a902693e3fc23be1ee8f8a7961a9bcf2/transformed/jetified-image-1.0.0-beta1/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/a902693e3fc23be1ee8f8a7961a9bcf2/transformed/jetified-image-1.0.0-beta1/res" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.android.odml/image/1.0.0-beta1/aa9d23e3124a588104fe600f42af0e192f732599/image-1.0.0-beta1-javadoc.jar!/" />

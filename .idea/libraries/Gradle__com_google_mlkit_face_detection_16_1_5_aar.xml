@@ -4,9 +4,12 @@
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/a4c2959e47370302909ac6115be188cc/transformed/face-detection-16.1.5/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/a1d6073fa6ac5c7a6bb383fd9b461b72/transformed/face-detection-16.1.5/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/7e724a1a10fdf588dc86d03a02691fa8/transformed/face-detection-16.1.5/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/112f3c285aa9ddf8583b22b06f2cb186/transformed/jetified-face-detection-16.1.5/AndroidManifest.xml" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/112f3c285aa9ddf8583b22b06f2cb186/transformed/jetified-face-detection-16.1.5/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/112f3c285aa9ddf8583b22b06f2cb186/transformed/jetified-face-detection-16.1.5/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/a4c25b0ee557ff08e523635dc9b1d38d/transformed/jetified-face-detection-16.1.5/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/d4a4c9c0505edbf908b0c3f2398e0d60/transformed/jetified-face-detection-16.1.5/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/80c62a9940fa1b2e9b55a927dfd99795/transformed/jetified-face-detection-16.1.5/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/80c62a9940fa1b2e9b55a927dfd99795/transformed/jetified-face-detection-16.1.5/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/80c62a9940fa1b2e9b55a927dfd99795/transformed/jetified-face-detection-16.1.5/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.mlkit/face-detection/16.1.5/ace98f39b262c59be4be4d52b871d1ba5dfff723/face-detection-16.1.5-javadoc.jar!/" />
