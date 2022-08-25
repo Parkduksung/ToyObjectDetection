@@ -24,4 +24,9 @@
     <color name="main">#7D5CDD</color>
     <color name="text">#6b6b6b</color>
     <color name="second">#C2C2C2</color>
+
+    <color name="bounding_box_color">#FF6F00</color>
+    <color name="icActive">#FFFFFFFF</color>
+    <color name="icFocused">#DDFFFFFF</color>
+    <color name="icPressed">#AAFFFFFF</color>
 </resources>
