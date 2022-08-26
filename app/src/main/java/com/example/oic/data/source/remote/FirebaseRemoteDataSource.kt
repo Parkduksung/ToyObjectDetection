@@ -1,5 +1,6 @@
 package com.example.oic.data.source.remote
 
+import com.example.oic.data.model.BookmarkWord
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
@@ -24,6 +25,20 @@ interface FirebaseRemoteDataSource {
 
     suspend fun resetPass(
         resetPassToId: String
+    ): Task<Void>
+
+    suspend fun createWordDB(
+        id: String
+    ): Task<Void>
+
+    suspend fun addWordItem(
+        id: String,
+        wordItem: BookmarkWord
+    ): Task<Void>
+
+    suspend fun deleteWordItem(
+        id: String,
+        wordItem: BookmarkWord
     ): Task<Void>
 
     fun getFirebaseAuth(): FirebaseAuth

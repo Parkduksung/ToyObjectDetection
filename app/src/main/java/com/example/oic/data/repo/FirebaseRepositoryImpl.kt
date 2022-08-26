@@ -1,48 +1,46 @@
 package com.example.oic.data.repo
 
 
+import com.example.oic.data.model.BookmarkWord
 import com.example.oic.data.source.remote.FirebaseRemoteDataSource
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 
 class FirebaseRepositoryImpl @Inject constructor(private val firebaseRemoteDataSource: FirebaseRemoteDataSource) :
     FirebaseRepository {
 
-
     override suspend fun login(id: String, password: String): Task<AuthResult> =
-        withContext(Dispatchers.IO) {
-            return@withContext firebaseRemoteDataSource.login(id, password)
-        }
+        firebaseRemoteDataSource.login(id, password)
 
     override suspend fun logout(): Boolean =
-        withContext(Dispatchers.IO) {
-            return@withContext firebaseRemoteDataSource.logout()
-        }
+        firebaseRemoteDataSource.logout()
 
     override suspend fun register(id: String, password: String): Task<AuthResult> =
-        withContext(Dispatchers.IO) {
-            return@withContext firebaseRemoteDataSource.register(id, password)
-        }
+        firebaseRemoteDataSource.register(id, password)
 
-    override suspend fun delete(): Task<Void>? = withContext(Dispatchers.IO) {
-        return@withContext firebaseRemoteDataSource.delete()
-    }
+    override suspend fun delete(): Task<Void>? =
+        firebaseRemoteDataSource.delete()
 
     override suspend fun resetPass(resetPassToId: String): Task<Void> =
-        withContext(Dispatchers.IO) {
-            return@withContext firebaseRemoteDataSource.resetPass(resetPassToId)
-        }
+        firebaseRemoteDataSource.resetPass(resetPassToId)
+
+    override suspend fun createWordDB(id: String): Task<Void> =
+        firebaseRemoteDataSource.createWordDB(id)
+
+    override suspend fun addWordItem(id: String, wordItem: BookmarkWord): Task<Void> =
+        firebaseRemoteDataSource.addWordItem(id, wordItem)
+
+
+    override suspend fun deleteWordItem(id: String, wordItem: BookmarkWord): Task<Void> =
+        firebaseRemoteDataSource.deleteWordItem(id, wordItem)
 
     override fun getFirebaseAuth(): FirebaseAuth =
         firebaseRemoteDataSource.getFirebaseAuth()
 
     override fun getFirebaseFireStore(): FirebaseFirestore =
         firebaseRemoteDataSource.getFirebaseFireStore()
-
 }
