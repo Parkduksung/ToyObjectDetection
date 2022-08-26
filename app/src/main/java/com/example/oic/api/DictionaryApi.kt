@@ -8,7 +8,7 @@ import retrofit2.http.Path
 interface DictionaryApi {
 
     companion object {
-        private const val URL_DICTIONARY = "https://api.dictionaryapi.dev/api/v2/entries/en/{word}"
+        private const val URL_DICTIONARY = "api/v2/entries/en/{word}"
     }
 
     @GET(URL_DICTIONARY)
