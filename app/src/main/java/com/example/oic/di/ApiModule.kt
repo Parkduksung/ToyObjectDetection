@@ -18,6 +18,7 @@ object ApiModule {
     fun provideDictionaryApi(): DictionaryApi {
         return Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create())
+            .baseUrl(DICTIONARY_URL)
             .build()
             .create(DictionaryApi::class.java)
     }
@@ -32,5 +33,6 @@ object ApiModule {
             .create(SheetApi::class.java)
     }
 
-    const val SHEET_URL = "https://sheetdb.io/"
+    private const val SHEET_URL = "https://sheetdb.io/"
+    private const val DICTIONARY_URL = "https://api.dictionaryapi.dev/"
 }
