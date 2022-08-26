@@ -5,56 +5,95 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
+import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import com.example.oic.R
+import com.example.oic.base.BaseFragment
+import com.example.oic.databinding.FragmentBookmarkBinding
+import com.example.oic.ext.showToast
+import com.example.oic.ui.adapter.BookmarkAdapter
+import com.example.oic.ui.home.HomeViewModel
+import com.example.oic.ui.home.HomeViewState
+import dagger.hilt.android.AndroidEntryPoint
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [BookmarkFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-class BookmarkFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+@AndroidEntryPoint
+class BookmarkFragment : BaseFragment<FragmentBookmarkBinding>(R.layout.fragment_bookmark) {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+    private val homeViewModel by activityViewModels<HomeViewModel>()
+
+    private val bookmarkViewModel by viewModels<BookmarkViewModel>()
+
+    private val bookmarkAdapter = BookmarkAdapter()
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        initUi()
+        initViewModel()
+    }
+
+    private fun initUi() {
+        with(binding) {
+            rvBookmark.adapter = bookmarkAdapter
+        }
+
+        bookmarkAdapter.run {
+            setOnItemClickListener {
+                //클릭시 대응.
+            }
+
+            itemDelete {
+                homeViewModel.deleteBookmark(it)
+            }
         }
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_bookmark, container, false)
+    override fun onResume() {
+        super.onResume()
+        bookmarkViewModel.getBookmarkList()
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment BookmarkFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            BookmarkFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
+    private fun initViewModel() {
+        homeViewModel.viewStateLiveData.observe(viewLifecycleOwner) { viewState ->
+            (viewState as? HomeViewState)?.let {
+                onChangedHomeViewState(it)
             }
+        }
+
+        bookmarkViewModel.viewStateLiveData.observe(viewLifecycleOwner) { viewState ->
+            (viewState as? BookmarkViewState)?.let {
+                onChangedBookmarkViewState(it)
+            }
+        }
     }
+
+    private fun onChangedHomeViewState(viewState: HomeViewState) {
+        when (viewState) {
+
+            is HomeViewState.DeleteBookmark -> {
+                bookmarkAdapter.delete(viewState.item)
+            }
+        }
+    }
+
+    private fun onChangedBookmarkViewState(viewState: BookmarkViewState) {
+        when (viewState) {
+            is BookmarkViewState.EmptyBookmarkList -> {
+                binding.rvBookmark.isVisible = false
+                binding.notBookmark.isVisible = true
+            }
+
+            is BookmarkViewState.ShowToast -> {
+                showToast(message = viewState.message)
+            }
+
+            is BookmarkViewState.GetBookmarkList -> {
+                binding.rvBookmark.isVisible = true
+                binding.notBookmark.isVisible = false
+                bookmarkAdapter.addAll(viewState.list)
+            }
+        }
+    }
+
 }
