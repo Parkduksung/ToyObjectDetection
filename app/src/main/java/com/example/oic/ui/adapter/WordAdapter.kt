@@ -4,6 +4,7 @@ import android.os.Parcelable
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.oic.data.model.BookmarkWord
 import com.example.oic.databinding.ItemWordBinding
 import kotlinx.android.parcel.Parcelize
 
@@ -57,4 +58,7 @@ class WordViewHolder(private val binding: ItemWordBinding) :
 data class WordItem(
     val word: String,
     val mean: String
-) : Parcelable
+) : Parcelable {
+    fun toBookmarkWord() : BookmarkWord =
+        BookmarkWord(word, mean)
+}
