@@ -3,6 +3,7 @@ package com.example.oic.ui.search.word
 import android.app.Application
 import com.example.oic.base.BaseViewModel
 import com.example.oic.data.repo.SearchWordRepository
+import com.example.oic.ext.defaultScope
 import com.example.oic.ext.ioScope
 import com.example.oic.util.Result
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -23,14 +24,19 @@ class WordContentViewModel @Inject constructor(
                     if (result.data.isEmpty()) {
                         viewStateChanged(WordContentViewState.EmptyResult)
                     } else {
-                        val toWordItemList = result.data.map { it.toWordItem() }.filter {
-                            it.word.substring(0..word.length).contains(word)
-                        }
+                        defaultScope {
+                            val toWordItemList = result.data.map { it.toWordItem() }
+                                .filter {
+                                    it.word.length >= word.length
+                                }.filter {
+                                    it.word.substring(word.indices).contains(word)
+                                }
 
-                        if (toWordItemList.isEmpty()) {
-                            viewStateChanged(WordContentViewState.EmptyResult)
-                        } else {
-                            viewStateChanged(WordContentViewState.GetSearchResult(toWordItemList))
+                            if (toWordItemList.isEmpty()) {
+                                viewStateChanged(WordContentViewState.EmptyResult)
+                            } else {
+                                viewStateChanged(WordContentViewState.GetSearchResult(toWordItemList))
+                            }
                         }
                     }
                 }

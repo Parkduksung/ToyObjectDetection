@@ -47,6 +47,7 @@ class WordContentFragment :
             rvWord.adapter = wordAdapter
         }
 
+
         wordAdapter.setOnItemClickListener { clickItem ->
             findNavController().navigate(
                 R.id.action_content_to_detail,

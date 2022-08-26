@@ -1,6 +1,7 @@
 package com.example.oic.ui.search.word
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -32,8 +33,21 @@ class WordDetailFragment : BaseFragment<FragmentWordDetailBinding>(R.layout.frag
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        initUi()
+        initViewModel()
     }
 
+    private fun initUi() {
+
+        with(binding) {
+
+            itemBookmark.setOnCheckedChangeListener { _, bookmarkState ->
+                wordDetailViewModel.toggleBookmark(bookmarkState)
+            }
+
+        }
+
+    }
 
     private fun initViewModel() {
 
@@ -51,7 +65,7 @@ class WordDetailFragment : BaseFragment<FragmentWordDetailBinding>(R.layout.frag
         when (viewState) {
 
             is WordDetailViewState.BookmarkState -> {
-
+                binding.itemBookmark.isChecked = viewState.isBookmark
             }
 
             is WordDetailViewState.GetSearchWord -> {
@@ -61,7 +75,6 @@ class WordDetailFragment : BaseFragment<FragmentWordDetailBinding>(R.layout.frag
             is WordDetailViewState.ShowToast -> {
                 showToast(message = viewState.message)
             }
-
         }
     }
 }

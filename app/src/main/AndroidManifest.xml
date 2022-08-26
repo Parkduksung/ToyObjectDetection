@@ -61,6 +61,10 @@
             android:name=".ui.search.detect.DetectActivity"
             android:exported="false" />
 
+        <activity
+            android:name=".ui.search.word.WordActivity"
+            android:exported="false" />
+
         <meta-data
             android:name="android.notch_support"
             android:value="true" />
