@@ -15,6 +15,7 @@ class WordContentViewModel @Inject constructor(
     private val searchWordRepository: SearchWordRepository
 ) : BaseViewModel(app) {
     fun searchWord(word: String) {
+        viewStateChanged(WordContentViewState.ShowProgress)
 
         ioScope {
             when (val result = searchWordRepository.getExcelList()) {
@@ -39,10 +40,13 @@ class WordContentViewModel @Inject constructor(
                             }
                         }
                     }
+
+                    viewStateChanged(WordContentViewState.HideProgress)
                 }
 
                 is Result.Error -> {
                     viewStateChanged(WordContentViewState.ShowToast("단어를 찾을 수 없습니다."))
+                    viewStateChanged(WordContentViewState.HideProgress)
                 }
             }
         }

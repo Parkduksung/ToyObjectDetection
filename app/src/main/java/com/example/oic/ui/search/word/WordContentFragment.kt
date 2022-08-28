@@ -82,6 +82,15 @@ class WordContentFragment :
             is WordContentViewState.ShowToast -> {
                 showToast(message = viewState.message)
             }
+
+            is WordContentViewState.ShowProgress -> {
+                binding.progressbar.bringToFront()
+                binding.progressbar.isVisible = true
+            }
+
+            is WordContentViewState.HideProgress -> {
+                binding.progressbar.isVisible = false
+            }
         }
     }
 
