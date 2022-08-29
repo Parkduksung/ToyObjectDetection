@@ -15,6 +15,8 @@ class BookmarkAdapter : RecyclerView.Adapter<BookmarkViewHolder>() {
 
     private lateinit var onDelete: (BookmarkWord) -> Unit
 
+    private var toggleMean: Boolean = true
+
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
@@ -25,7 +27,7 @@ class BookmarkAdapter : RecyclerView.Adapter<BookmarkViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: BookmarkViewHolder, position: Int) {
-        holder.bind(bookmarkList[position], onClick, onDelete)
+        holder.bind(bookmarkList[position], onClick, onDelete, toggleMean)
     }
 
     override fun getItemCount(): Int =
@@ -41,22 +43,26 @@ class BookmarkAdapter : RecyclerView.Adapter<BookmarkViewHolder>() {
         onClick = listener
     }
 
-    fun delete(item : BookmarkWord){
-        if(bookmarkList.contains(item)){
+    fun delete(item: BookmarkWord) {
+        if (bookmarkList.contains(item)) {
             val index = bookmarkList.indexOf(item)
             bookmarkList.removeAt(index)
             notifyItemChanged(index)
         }
-
     }
 
-    fun add(item : BookmarkWord){
+    fun add(item: BookmarkWord) {
         bookmarkList.add(item)
         notifyItemChanged(bookmarkList.lastIndex)
     }
 
     fun itemDelete(listener: (BookmarkWord) -> Unit) {
         onDelete = listener
+    }
+
+    fun toggleMean(isShow: Boolean) {
+        toggleMean = isShow
+        notifyDataSetChanged()
     }
 }
 
@@ -66,7 +72,8 @@ class BookmarkViewHolder(private val binding: ItemWordBinding) :
     fun bind(
         item: BookmarkWord,
         onClick: (BookmarkWord) -> Unit,
-        onDelete: (BookmarkWord) -> Unit
+        onDelete: (BookmarkWord) -> Unit,
+        toggleMean: Boolean
     ) {
         binding.item = item.foWordItem()
         binding.deleteBookmark.isVisible = true
@@ -77,5 +84,6 @@ class BookmarkViewHolder(private val binding: ItemWordBinding) :
         itemView.setOnClickListener {
             onClick(item)
         }
+        binding.mean.isVisible = toggleMean
     }
 }

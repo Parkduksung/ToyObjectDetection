@@ -36,6 +36,11 @@ class BookmarkFragment : BaseFragment<FragmentBookmarkBinding>(R.layout.fragment
     private fun initUi() {
         with(binding) {
             rvBookmark.adapter = bookmarkAdapter
+
+            binding.switchMean.setOnCheckedChangeListener { _, isShowMean ->
+                bookmarkAdapter.toggleMean(isShowMean)
+            }
+
         }
 
         bookmarkAdapter.run {
