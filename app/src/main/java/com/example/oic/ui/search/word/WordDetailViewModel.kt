@@ -25,32 +25,45 @@ class WordDetailViewModel @Inject constructor(
     val wordItemObservableField = ObservableField<WordItem>()
 
     fun searchMeanWord() {
-        wordItemObservableField.get()?.let { wordItem ->
-            checkBookmark()
 
+        viewStateChanged(WordDetailViewState.ShowProgress)
+
+        wordItemObservableField.get()?.let { wordItem ->
             ioScope {
                 when (val result = searchWordRepository.searchMeanWord(wordItem.word)) {
                     is Result.Success -> {
-                        Log.d("결과", result.data.toString())
+
+                        if (result.data.isNotEmpty()) {
+                            viewStateChanged(WordDetailViewState.GetSearchWord(result.data[0]))
+                        } else {
+                            viewStateChanged(WordDetailViewState.NotSearchWord)
+                            viewStateChanged(WordDetailViewState.ShowToast("단어를 찾을 수 없습니다."))
+                        }
                     }
 
                     is Result.Error -> {
+                        viewStateChanged(WordDetailViewState.NotSearchWord)
                         viewStateChanged(WordDetailViewState.ShowToast("단어를 찾을 수 없습니다."))
                     }
                 }
             }
         }
+
+        viewStateChanged(WordDetailViewState.HideProgress)
     }
 
-    private fun checkBookmark() {
+    fun checkBookmark() {
         firebaseRepository.getWordList { bookmarkList ->
-            bookmarkList?.let {
+
+            if(bookmarkList!= null){
                 val filterList =
-                    it.filter {
+                    bookmarkList.filter {
                         (it.word == wordItemObservableField.get()!!.word) &&
                                 (it.mean == wordItemObservableField.get()!!.mean)
                     }
                 viewStateChanged(WordDetailViewState.BookmarkState(filterList.isNotEmpty()))
+            }else{
+                viewStateChanged(WordDetailViewState.BookmarkState(false))
             }
         }
     }

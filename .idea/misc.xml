@@ -42,7 +42,7 @@
         <entry key="app/src/main/res/layout/fragment_word_content.xml" value="0.20199275362318841" />
         <entry key="app/src/main/res/layout/fragment_word_detail.xml" value="0.25" />
         <entry key="app/src/main/res/layout/item_word.xml" value="0.20199275362318841" />
-        <entry key="app/src/main/res/layout/view_word_detail.xml" value="0.20199275362318841" />
+        <entry key="app/src/main/res/layout/view_word_detail.xml" value="0.25" />
       </map>
     </option>
   </component>
