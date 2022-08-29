@@ -33,7 +33,7 @@
         android:theme="@style/Theme.OIC"
         tools:targetApi="31">
         <activity
-            android:name=".ui.home.HomeActivity"
+            android:name=".ui.splash.SplashActivity"
             android:exported="true"
             android:launchMode="singleTask">
             <intent-filter>
@@ -48,10 +48,10 @@
             android:exported="false"
             android:launchMode="singleTask" />
 
-        <!--        <activity-->
-        <!--            android:name=".ui.home.HomeActivity"-->
-        <!--            android:exported="false"-->
-        <!--            android:launchMode="singleTask" />-->
+        <activity
+            android:name=".ui.home.HomeActivity"
+            android:exported="false"
+            android:launchMode="singleTask" />
 
         <activity
             android:name=".ui.register.RegisterActivity"
