@@ -1,60 +1,152 @@
 package com.example.oic.ui.mypage
 
+import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
+import androidx.core.view.isVisible
+import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import com.example.oic.R
+import com.example.oic.base.BaseFragment
+import com.example.oic.databinding.FragmentMyPageBinding
+import com.example.oic.ui.bookmark.BookmarkViewState
+import com.example.oic.ui.dialog.ChooseDialog
+import com.example.oic.ui.dialog.ChooseItem
+import com.example.oic.ui.dialog.WithdrawDialog
+import com.example.oic.ui.home.HomeActivity
+import com.example.oic.ui.home.HomeViewModel
+import com.example.oic.ui.home.HomeViewState
+import com.example.oic.ui.login.LoginActivity
+import com.example.oic.util.EventDecorator
+import com.prolificinteractive.materialcalendarview.CalendarDay
+import dagger.hilt.android.AndroidEntryPoint
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [MyPageFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-class MyPageFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+@AndroidEntryPoint
+class MyPageFragment : BaseFragment<FragmentMyPageBinding>(R.layout.fragment_my_page) {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+
+    private val myPageViewModel by viewModels<MyPageViewModel>()
+
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        initUi()
+        initViewModel()
+    }
+
+    private fun initUi() {
+
+    }
+
+    private fun initViewModel() {
+
+        binding.viewModel = myPageViewModel
+
+        myPageViewModel.viewStateLiveData.observe(viewLifecycleOwner) { viewState ->
+            (viewState as? MyPageViewState)?.let {
+                onChangedMyPageViewState(it)
+            }
         }
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_my_page, container, false)
+    override fun onResume() {
+        super.onResume()
+        myPageViewModel.getBookmarkList()
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment MyPageFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            MyPageFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+    private fun onChangedMyPageViewState(viewState: MyPageViewState) {
+        when (viewState) {
+            is MyPageViewState.GetBookmarkList -> {
+                viewState.list
+            }
+
+            is MyPageViewState.GetCalendarList -> {
+                viewState.list.forEach {
+                    binding.calendarView.addDecorator(
+                        EventDecorator(
+                            listOf(it.first),
+                            requireActivity(),
+                            it.second.convertLevel()
+                        )
+                    )
                 }
             }
+
+            is MyPageViewState.ShowLogoutDialog -> {
+                ChooseDialog(
+                    ChooseItem(
+                        title = "로그아웃",
+                        content = "로그아웃 하시겠습니까?",
+                        negativeString = "취소",
+                        positiveString = "로그아웃"
+                    ),
+                    dismissCallback = {
+                        myPageViewModel.logout()
+                    }
+                ).show(childFragmentManager, "ChooseDialog")
+            }
+
+            is MyPageViewState.ShowWithdrawDialog -> {
+                ChooseDialog(
+                    ChooseItem(
+                        title = "회원탈퇴",
+                        content = "회원탈퇴 하시겠습니까?",
+                        negativeString = "취소",
+                        positiveString = "탈퇴"
+                    ),
+                    dismissCallback = {
+                        WithdrawDialog(
+                            ChooseItem(
+                                title = "회원탈퇴",
+                                content = "",
+                                negativeString = "취소",
+                                positiveString = "탈퇴"
+                            ),
+                            dismissCallback = {
+                                startActivity(
+                                    Intent(
+                                        requireActivity(),
+                                        LoginActivity::class.java
+                                    ).apply {
+                                        addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                                    })
+                            }
+                        ).show(childFragmentManager, "WithdrawDialog")
+                    }
+                ).show(childFragmentManager, "ChooseDialog")
+            }
+
+            is MyPageViewState.Logout -> {
+                startActivity(Intent(requireActivity(), LoginActivity::class.java).apply {
+                    addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                })
+            }
+
+            is MyPageViewState.ShowProgress -> {
+                binding.progressbar.bringToFront()
+                binding.progressbar.isVisible = true
+            }
+
+            is MyPageViewState.HideProgress -> {
+                binding.progressbar.isVisible = false
+            }
+        }
+    }
+
+    private fun Int.convertLevel(): String {
+        return when (this) {
+            in 1..3 -> {
+                "level_1"
+            }
+
+            in 4..6 -> {
+                "level_2"
+            }
+
+            else -> {
+                "level_3"
+            }
+        }
     }
 }
