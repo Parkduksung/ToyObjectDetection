@@ -2,6 +2,7 @@ package com.example.oic.ui.mypage
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.core.view.isVisible
 import androidx.fragment.app.activityViewModels
@@ -62,6 +63,7 @@ class MyPageFragment : BaseFragment<FragmentMyPageBinding>(R.layout.fragment_my_
             }
 
             is MyPageViewState.GetCalendarList -> {
+
                 viewState.list.forEach {
                     binding.calendarView.addDecorator(
                         EventDecorator(
@@ -130,6 +132,10 @@ class MyPageFragment : BaseFragment<FragmentMyPageBinding>(R.layout.fragment_my_
 
             is MyPageViewState.HideProgress -> {
                 binding.progressbar.isVisible = false
+            }
+
+            is MyPageViewState.EmptyBookmarkList -> {
+                binding.calendarView.removeDecorators()
             }
         }
     }

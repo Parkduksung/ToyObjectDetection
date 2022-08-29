@@ -73,8 +73,11 @@ class MyPageViewModel @Inject constructor(
 
                     if (calendarDayList.isNotEmpty()) {
                         viewStateChanged(MyPageViewState.GetCalendarList(calendarDayList))
+                    } else {
+                        viewStateChanged(MyPageViewState.EmptyBookmarkList)
                     }
-
+                } else {
+                    viewStateChanged(MyPageViewState.EmptyBookmarkList)
                 }
             }
         }
